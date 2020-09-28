@@ -6,7 +6,7 @@ import './App.less';
 export default class App extends Component{
     render() {
         return (
-         <div>App</div>
+         <div>Login</div>
         )
     }
 
