@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 export default class Counter extends Component {
 
     numberRef = React.createRef()
@@ -20,7 +21,7 @@ export default class Counter extends Component {
         let {value} = this.numberRef.current
         let {count} = this.props
 
-        if(count % 2 !== 0){
+        if (count % 2 !== 0) {
             this.props.increment(value)
         }
     }
@@ -28,9 +29,7 @@ export default class Counter extends Component {
 //异步加
     incrementAsync = () => {
         let {value} = this.numberRef.current
-        setTimeout(() => {
-            this.props.increment(value)
-        }, 200)
+        this.props.incrementASync(value, 3000)
     }
 
     render() {

@@ -1,8 +1,11 @@
 //引入createStore,用户创建redux最核心的store
-import {createStore} from "redux"
+import {createStore,applyMiddleware} from "redux"
 
 //引入reducer，用户真正操作状态
 import reducer from "./reducer"
 
-export default createStore(reducer)
+//用户处理异步action
+import thunk from "redux-thunk"
+
+export default createStore(reducer,applyMiddleware(thunk))
 

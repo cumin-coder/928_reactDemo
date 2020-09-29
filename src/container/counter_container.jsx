@@ -3,7 +3,7 @@ import Counter from "../components/counter"
 
 //引入connect,用于创建一个容器组件
 import {connect} from "react-redux"
-import {increment, decrement} from "../redux/action_creator";
+import {increment, decrement,incrementASync} from "../redux/action_creator";
 
 //从redux中把state取出，通过props传递给UI组件
 function mapReduxStateToProps(state) {
@@ -16,6 +16,7 @@ function mapReduxStateToProps(state) {
 const mapReduxMethodToProps = dispatch => ({
     increment: value => dispatch(increment(value)),
     decrement: value => dispatch(decrement(value)),
+    incrementASync: (value,timer) => dispatch(incrementASync(value,timer)),
 })
 
 
