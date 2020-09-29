@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {increment,decrement} from "../redux/action_creator"
 export default class Counter extends Component {
 
     numberRef = React.createRef()
@@ -7,21 +6,22 @@ export default class Counter extends Component {
 //加
     increment = () => {
         let {value} = this.numberRef.current
-        this.props.store.dispatch(increment(value))
+        this.props.increment(value)
     }
 
 //减
     decrement = () => {
         let {value} = this.numberRef.current
-        this.props.store.dispatch(decrement(value))
+        this.props.decrement(value)
     }
 
 //奇数加
     incrementOdd = () => {
         let {value} = this.numberRef.current
-        let count = this.props.store.getState()
-        if (count % 2 !== 0) {
-            this.props.store.dispatch(increment(value))
+        let {count} = this.props
+
+        if(count % 2 !== 0){
+            this.props.increment(value)
         }
     }
 
@@ -29,14 +29,14 @@ export default class Counter extends Component {
     incrementAsync = () => {
         let {value} = this.numberRef.current
         setTimeout(() => {
-            this.props.store.dispatch(increment(value))
+            this.props.increment(value)
         }, 200)
     }
 
     render() {
         return (
             <div>
-                <h1>count is {this.props.store.getState()}</h1>&nbsp;
+                <h1>count is {this.props.count}</h1>&nbsp;
                 <select ref={this.numberRef}>
                     <option value="1">1</option>
                     <option value="2">2</option>
